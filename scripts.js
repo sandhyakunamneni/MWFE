@@ -58,7 +58,7 @@ uploadForm.addEventListener('submit', async (e) => {
 
   try {
     // Send the FormData to the server using the fetch() method
-    const response = await fetch('/uploadAndSend', {
+    const response = await fetch('/upload', {
       method: 'POST',
       body: formData,
     });
