@@ -4,6 +4,19 @@ import uuid
 
 app = Flask(__name__)
 
+USER = {
+    "username": "rsk",
+    "password": "rsk",  # Replace with the hashed password
+}
+
+@app.route('/api/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    if data and data.get('username') == USER['username'] and data.get('password') == USER['password']:
+        session['logged_in'] = True
+        return jsonify({'success': True})
+    return jsonify({'success': False})
+
 # AWS S3 configuration
 s3 = boto3.client("s3")
 bucket_name = "your-s3-bucket-name"  # Replace with your S3 bucket name
